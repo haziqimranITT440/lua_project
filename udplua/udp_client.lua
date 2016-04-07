@@ -1,0 +1,13 @@
+local socket = require("socket")
+
+udp = socket.udp()
+udp:setpeername("127.0.0.1",1300)
+udp:settimeout()
+
+io.write("Enter anything: ")
+anything = io.read()
+udp:send(anything)
+data = udp:receive()
+if data then
+  print("Received: ", anything)
+end
